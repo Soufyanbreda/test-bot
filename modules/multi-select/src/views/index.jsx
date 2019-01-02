@@ -1,9 +1,21 @@
-import React from 'react'
+export const Plugin = ({ slots, id, onSendData }) => {
+  const handleChange = e => {
+    onSendData({
+      type: "text",
+      text: `Selected ${e.target.value} date-time`,
+      data: { date: e.target.value, messageId: id }
+    });
+  };
 
-import style from './style.scss'
+  return (
+    <select onChange={handleChange}>
+      {(slots || []).map((slot, i) => (
+        <option value={slot} key={i}>
+          {slot}
+        </option>
+      ))}
+    </select>
+  );
+};
 
-export default class TemplateModule extends React.Component {
-  render() {
-    return <h4>This module is empty...</h4>
-  }
-}
+export const Entry = () => null;

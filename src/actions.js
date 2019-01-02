@@ -4,7 +4,6 @@ const actions = {
       await event.reply('#select', state);
   },
 
-
 };
 module.exports = actions;
 
