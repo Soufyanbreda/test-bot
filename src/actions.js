@@ -7,4 +7,8 @@ async function yourCustomAction(state, event, params) {
   return state
 }
 
-module.exports = { yourCustomAction }
+renderSelect: async (state, event) => {
+  await event.reply('#select', state);
+},
+
+module.exports = { yourCustomAction, renderSelect }
