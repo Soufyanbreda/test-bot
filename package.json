@@ -7,14 +7,14 @@
     "node": ">= 8 < 11"
   },
   "dependencies": {
-    "botpress": "10.47.1",
-    "@botpress/audience": "10.47.1",
-    "@botpress/builtins": "10.47.1",
-    "@botpress/nlu": "10.47.1",
-    "@botpress/skill-choice": "10.47.1",
+    "@botpress/audience": "^10.51.7",
+    "@botpress/builtins": "^10.51.7",
+    "@botpress/channel-web": "^10.51.7",
+    "@botpress/hitl": "^10.51.7",
+    "@botpress/nlu": "^10.51.7",
+    "@botpress/skill-choice": "^10.51.7",
+    "botpress": "^10.51.7",
     "botpress-multi-select": "./modules/botpress-multi-select",
-    "@botpress/hitl": "10.47.1",
-    "@botpress/channel-web": "10.47.1",
     "jsdoc-api": "^4.0.3",
     "lodash": "^4.17.10",
     "yn": "^2.0.0"
