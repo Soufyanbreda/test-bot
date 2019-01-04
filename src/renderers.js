@@ -2,7 +2,7 @@ const Renderer = {
   
     select: data => ({
       text: 'Select option',
-      type: '@botpress/multi-select',
+      type: '@botpress/multiselect',
       data: { slots: data.slots }
     }),
   
