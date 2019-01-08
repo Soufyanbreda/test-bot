@@ -1,21 +1,28 @@
 export const Plugin = ({ slots, id, onSendData }) => {
+  
+
   const handleChange = e => {
+    const { value, checked } = e.target;
+
+    console.log(value, checked);
+  
     onSendData({
-      type: "text",
-      text: `Selected ${e.target.value} date-time`,
-      data: { date: e.target.value, messageId: id }
+      type: 'channels',
+      data: { value, selected: checked }
     });
   };
 
   return (
-    <select onChange={handleChange}>
-      {(slots || []).map((slot, i) => (
-        <option value={slot} key={i}>
-          {slot}
-        </option>
+    <div className="multiple-choice"  >
+      {slots.map((choice, index) => (
+        <div key={index}>
+          <input type="checkbox" value={choice}  onChange={handleChange} />
+          {choice}
+        </div>
       ))}
-    </select>
+    </div>
   );
 };
+
 
 export const Entry = () => null;
