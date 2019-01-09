@@ -98,9 +98,26 @@
     {
       "id": "15c30adb84",
       "name": "node-1473",
-      "next": [],
+      "next": [
+        {
+          "condition": "true",
+          "node": "node-5a55"
+        }
+      ],
       "onEnter": [
         "renderSelect {}"
+      ],
+      "onReceive": [
+        "getChannelChoices {}"
+      ]
+    },
+    {
+      "id": "e34e4a07d5",
+      "name": "node-5a55",
+      "next": [],
+      "onEnter": [
+        "getChannelChoices {}",
+        "say #!builtin_text-a5yMM3"
       ],
       "onReceive": null
     }

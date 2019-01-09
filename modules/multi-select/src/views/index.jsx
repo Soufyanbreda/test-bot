@@ -1,28 +1,62 @@
-export const Plugin = ({ slots, id, onSendData }) => {
-  
+import React from 'react'
 
-  const handleChange = e => {
-    const { value, checked } = e.target;
+import style from './style.css'
 
-    console.log(value, checked);
-  
+export const Plugin = ({ slots, onSendData }) => {
+  const onChoicesSubmit = (choices) => {
     onSendData({
-      type: 'channels',
-      data: { value, selected: checked }
+      type: 'text',
+      text: `Selected ${choices.join(', ' )} `,
+      data: { choices }
     });
   };
-
-  return (
-    <div className="multiple-choice"  >
-      {slots.map((choice, index) => (
-        <div key={index}>
-          <input type="checkbox" value={choice}  onChange={handleChange} />
+  return (  
+      <MultipleChoice choices={slots} onSubmit={onChoicesSubmit} />
+  );
+};
+class MultipleChoice extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selected: []
+    };
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+  onChange(e) {
+    const { value, checked } = e.target;
+    this.setState(({ selected }) => {
+      if (checked) {
+        selected.push(value);
+      } else {
+        selected.splice(selected.indexOf(value), 1);
+      }
+      return selected;
+    });
+  }
+  onSubmit() {
+    this.props.onSubmit(this.state.selected);
+  }
+  render() {
+    const { choices } = this.props;
+    return (
+      <div className="multiple-choice">
+      {choices.map((choice, index) => (
+        <div className="choice-holder" key={index}>
+          <input
+               type="checkbox"
+               className="checkbox"
+               value={choice}
+               onClick={this.onChange}/>
           {choice}
         </div>
       ))}
+      <button className="button" onClick={this.onSubmit}>
+        Confirm
+      </button>
     </div>
-  );
-};
-
+    );
+  }
+}
 
 export const Entry = () => null;

@@ -2,13 +2,14 @@ const actions = {
 
   renderSelect: async (state, event) => {
     await event.reply('#select', {
-      slots: ['Viber', 'SMS', 'RCS'], 
-      onSendData: (data) => {
-          console.log(`${data.value} selected: ${data.selected}`);
-      }
-  });
-  console.log(event.data)
+      slots: ['Viber', 'SMS', 'RCS']});
   },
+
+  getChannelChoices: async (state, event) => {
+    console.log(event.raw)
+  
+  },
+
 
 };
 module.exports = actions;
